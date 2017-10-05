@@ -18,9 +18,9 @@ document.getElementById('shw_btn').addEventListener("click", ()=>{
   document.getElementById('shw_list').innerHTML = ""
 
 })
-document.getElementById('fridge1').addEventListener("click", () => {
-  fetch('http://localhost:3000/api/v1/items').then(res=>res.json()).then(json => console.log(json))
-})
+// document.getElementById('fridge1').addEventListener("click", () => {
+//   fetch('http://localhost:3000/api/v1/items').then(res=>res.json()).then(json => console.log(json))
+// })
 
 // fetch("http://localhost:3000/api/v1/items/", {
 //     method: "POST",
@@ -58,7 +58,21 @@ var display_items_in_fridge = () => {
   usersItems.forEach((itm) =>{
     li = document.createElement('li')
     li.id = `list_itm_${itm.id}`
-    li.innerHTML = `<button id=x_btn_${itm.id} >X</button><p>${itm.name} - ${itm.exp_date}</p>`
+    let storage_name;
+    switch(itm.storage_id){
+      case 1:
+      storage_name = "Freezer"
+      break;
+      case 2:
+      storage_name = "Cabinets"
+      break;
+      case 3:
+      storage_name = "Fridge"
+      break;
+      default:
+      storage_name = "Not Stored"
+    }
+    li.innerHTML = `<button id=x_btn_${itm.id} >X</button><p>${itm.name} - ${storage_name} - ${itm.exp_date}</p>`
     document.getElementById('shw_list').appendChild(li)
     document.getElementById(`x_btn_${itm.id}`).addEventListener("click", (e)=>{
       e.preventDefault()
@@ -67,13 +81,13 @@ var display_items_in_fridge = () => {
 
   })
 }
-document.getElementById('keg1').addEventListener("mouseover", () => {
-  fetch('http://localhost:3000/api/v1/kegs/1').then(res=>res.json()).then(json => console.log(json))
-})
-
-document.getElementById('keg2').addEventListener("mouseover", () => {
-  fetch('http://localhost:3000/api/v1/kegs/2').then(res=>res.json()).then(json => console.log(json))
-})
+// document.getElementById('keg1').addEventListener("mouseover", () => {
+//   fetch('http://localhost:3000/api/v1/kegs/1').then(res=>res.json()).then(json => console.log(json))
+// })
+//
+// document.getElementById('keg2').addEventListener("mouseover", () => {
+//   fetch('http://localhost:3000/api/v1/kegs/2').then(res=>res.json()).then(json => console.log(json))
+// })
 
 var delete_from_db = (id) => {
 
@@ -91,4 +105,53 @@ document.getElementsByName("img_hover_name").forEach((img) => {
   img.addEventListener("mouseout", ()=>{img.setAttribute('style','-webkit-filter: brightness(1.0)')})
 
 })
+
+document.getElementById("fi_logo").addEventListener("click", () => {window.open('https://flatironschool.com/')})
+
+document.getElementById("keg1_mark_full").addEventListener('click', () => {fetch(`http://localhost:3000/api/v1/kegs/refresh/1`).then(res => res.json()).then(res => {
+  alert(res.message)
+  addKegInfoBeer()
+})
+})
+
+document.getElementById("keg1_mark_empty").addEventListener('click', () => {fetch(`http://localhost:3000/api/v1/kegs/empty/1`).then(res => res.json()).then(res => {
+  alert(res.message)
+  addKegInfoBeer()
+}
+)})
+
+document.getElementById("keg2_mark_full").addEventListener('click', () => {fetch(`http://localhost:3000/api/v1/kegs/refresh/2`).then(res => res.json()).then(res =>{
+
+ alert(res.message);
+ addKegInfoRb()
+}
+)})
+
+document.getElementById("keg2_mark_empty").addEventListener('click', () => {fetch(`http://localhost:3000/api/v1/kegs/empty/2`).then(res => res.json()).then(res => {
+  alert(res.message);
+  addKegInfoRb()
+})})
+
+document.getElementById('keg_btn').addEventListener("click", () => {
+  addKegInfoBeer()
+  addKegInfoRb()
+})
+
+var addKegInfoBeer = () => {
+  document.getElementById('keg_shw_list_beer').innerHTML = ""
+
+  li = document.createElement('li')
+  li.id = "beer_keg_stats"
+  fetch('http://localhost:3000/api/v1/kegs/1').then(res=>res.json()).then(json => li.innerHTML = `Amount full ${json.amount_full}%` )
+  document.getElementById('keg_shw_list_beer').appendChild(li)
+
+}
+
+var addKegInfoRb = () => {
+  document.getElementById('keg_shw_list_rb').innerHTML = ""
+  li2 = document.createElement('li')
+  li2.id = "rootbeer_keg_stats"
+  fetch('http://localhost:3000/api/v1/kegs/2').then(res=>res.json()).then(json => li2.innerHTML = `Amount full ${json.amount_full}%` )
+  document.getElementById('keg_shw_list_rb').appendChild(li2)
+}
 // .addEventListener("mouseover", ()=>{a.setAttribute('style','-webkit-filter: brightness(1.1)')})
