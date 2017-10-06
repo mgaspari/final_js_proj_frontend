@@ -4,50 +4,59 @@
   color: rgb(146, 146, 146);
 }*/
 body {
-    width: 100wh;
-    height: 90vh;
-    color: rgb(146, 146, 146);
-    background: linear-gradient(-45deg,  #116fc1, #4390bc , #68a7ca , #8dbdd8 , #b2d3e6 ,#d8e9f3, #ffffff );
-    background-size: 400% 400%;
-    -webkit-animation: Gradient 20s ease infinite;
-    -moz-animation: Gradient 20s ease infinite;
-    animation: Gradient 20s ease infinite;
+  width: 100wh;
+  height: 90vh;
+  color: rgb(146, 146, 146);
+  background: linear-gradient(
+    -45deg,
+    #116fc1,
+    #4390bc,
+    #68a7ca,
+    #8dbdd8,
+    #b2d3e6,
+    #d8e9f3,
+    #ffffff
+  );
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 12s ease infinite;
+  -moz-animation: Gradient 12s ease infinite;
+  animation: Gradient 12s ease infinite;
 }
 
 @-webkit-keyframes Gradient {
-    0% {
-        background-position: 0% 50%
-    }
-    50% {
-        background-position: 100% 50%
-    }
-    100% {
-        background-position: 0% 50%
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @-moz-keyframes Gradient {
-    0% {
-        background-position: 0% 50%
-    }
-    50% {
-        background-position: 100% 50%
-    }
-    100% {
-        background-position: 0% 50%
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes Gradient {
-    0% {
-        background-position: 0% 50%
-    }
-    50% {
-        background-position: 100% 50%
-    }
-    100% {
-        background-position: 0% 50%
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 p {
   margin-bottom: 0.2em;
@@ -72,7 +81,7 @@ p {
 
 #main_title_text {
   position: relative;
-  font-family: 'Carrois Gothic SC', sans-serif;
+  font-family: "Carrois Gothic SC", sans-serif;
   float: left;
   z-index: 0;
   width: 68%;
@@ -115,11 +124,15 @@ p {
   background-color: #52b5ab;
 }
 
-#add_btn_button_button-2, #shw_btn, #keg_btn{
+#add_btn_button_button-2,
+#shw_btn,
+#keg_btn {
   width: 100%;
   height: 66px;
 }
 
-#shw_list{
+#shw_list {
   color: black;
+  font-family: "Carrois Gothic SC", sans-serif;
+  font-size: 16px;
 }
