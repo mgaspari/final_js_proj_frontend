@@ -17,10 +17,10 @@ document.getElementById("shw_btn").addEventListener("click", () => {
   document.getElementById("shw_list").innerHTML = "";
 });
 // document.getElementById('fridge1').addEventListener("click", () => {
-//   fetch('http://localhost:3000/api/v1/items').then(res=>res.json()).then(json => console.log(json))
+//   fetch('http://nameless-waters-34459.herokuapp.com/api/v1/items').then(res=>res.json()).then(json => console.log(json))
 // })
 
-// fetch("http://localhost:3000/api/v1/items/", {
+// fetch("http://nameless-waters-34459.herokuapp.com/api/v1/items/", {
 //     method: "POST",
 //     headers: {'Accept': 'application/json',
 //         'Content-Type': 'application/json'},
@@ -30,7 +30,7 @@ document.getElementById("shw_btn").addEventListener("click", () => {
 document.getElementById("fs_item_form").addEventListener("submit", e => {
   e.preventDefault();
 
-  fetch("http://localhost:3000/api/v1/items/", {
+  fetch("http://nameless-waters-34459.herokuapp.com/api/v1/items/", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -56,7 +56,9 @@ document.getElementById("fs_item_form").addEventListener("submit", e => {
 });
 document.getElementById("fs_items_show").addEventListener("submit", e => {
   e.preventDefault();
-  fetch(`http://localhost:3000/api/v1/items/${show_slack.value}`)
+  fetch(
+    `http://nameless-waters-34459.herokuapp.com/api/v1/items/${show_slack.value}`
+  )
     .then(res => res.json())
     .then(res => (usersItems = res))
     .then(display_items_in_fridge);
@@ -91,15 +93,15 @@ var display_items_in_fridge = () => {
   });
 };
 // document.getElementById('keg1').addEventListener("mouseover", () => {
-//   fetch('http://localhost:3000/api/v1/kegs/1').then(res=>res.json()).then(json => console.log(json))
+//   fetch('http://nameless-waters-34459.herokuapp.com/api/v1/kegs/1').then(res=>res.json()).then(json => console.log(json))
 // })
 //
 // document.getElementById('keg2').addEventListener("mouseover", () => {
-//   fetch('http://localhost:3000/api/v1/kegs/2').then(res=>res.json()).then(json => console.log(json))
+//   fetch('http://nameless-waters-34459.herokuapp.com/api/v1/kegs/2').then(res=>res.json()).then(json => console.log(json))
 // })
 
 var delete_from_db = id => {
-  fetch(`http://localhost:3000/api/v1/items/delete/${id}`)
+  fetch(`http://nameless-waters-34459.herokuapp.com/api/v1/items/delete/${id}`)
     .then(res => res.json())
     .then(res => {
       console.log(res);
@@ -123,7 +125,7 @@ document.getElementById("fi_logo").addEventListener("click", () => {
 });
 
 document.getElementById("keg1_mark_full").addEventListener("click", () => {
-  fetch(`http://localhost:3000/api/v1/kegs/refresh/1`)
+  fetch(`http://nameless-waters-34459.herokuapp.com/api/v1/kegs/refresh/1`)
     .then(res => res.json())
     .then(res => {
       alert(res.message);
@@ -132,7 +134,7 @@ document.getElementById("keg1_mark_full").addEventListener("click", () => {
 });
 
 document.getElementById("keg1_mark_empty").addEventListener("click", () => {
-  fetch(`http://localhost:3000/api/v1/kegs/empty/1`)
+  fetch(`http://nameless-waters-34459.herokuapp.com/api/v1/kegs/empty/1`)
     .then(res => res.json())
     .then(res => {
       alert(res.message);
@@ -141,7 +143,7 @@ document.getElementById("keg1_mark_empty").addEventListener("click", () => {
 });
 
 document.getElementById("keg2_mark_full").addEventListener("click", () => {
-  fetch(`http://localhost:3000/api/v1/kegs/refresh/2`)
+  fetch(`http://nameless-waters-34459.herokuapp.com/api/v1/kegs/refresh/2`)
     .then(res => res.json())
     .then(res => {
       alert(res.message);
@@ -150,7 +152,7 @@ document.getElementById("keg2_mark_full").addEventListener("click", () => {
 });
 
 document.getElementById("keg2_mark_empty").addEventListener("click", () => {
-  fetch(`http://localhost:3000/api/v1/kegs/empty/2`)
+  fetch(`http://nameless-waters-34459.herokuapp.com/api/v1/kegs/empty/2`)
     .then(res => res.json())
     .then(res => {
       alert(res.message);
@@ -168,7 +170,7 @@ var addKegInfoBeer = () => {
 
   li = document.createElement("li");
   li.id = "beer_keg_stats";
-  fetch("http://localhost:3000/api/v1/kegs/1")
+  fetch("http://nameless-waters-34459.herokuapp.com/api/v1/kegs/1")
     .then(res => res.json())
     .then(json => (li.innerHTML = `Amount full ${json.amount_full}%`));
   document.getElementById("keg_shw_list_beer").appendChild(li);
@@ -178,7 +180,7 @@ var addKegInfoRb = () => {
   document.getElementById("keg_shw_list_rb").innerHTML = "";
   li2 = document.createElement("li");
   li2.id = "rootbeer_keg_stats";
-  fetch("http://localhost:3000/api/v1/kegs/2")
+  fetch("http://nameless-waters-34459.herokuapp.com/api/v1/kegs/2")
     .then(res => res.json())
     .then(json => (li2.innerHTML = `Amount full ${json.amount_full}%`));
   document.getElementById("keg_shw_list_rb").appendChild(li2);
